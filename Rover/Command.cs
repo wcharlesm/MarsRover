@@ -13,7 +13,7 @@ namespace Command
             var sr = new StringReader(input);
             _ = sr.ReadLine();
             var start = parseStart(sr.ReadLine());
-            var cmd = new TurnCommand(sr.ReadLine());
+            var cmd = CommandFactory.Get(sr.ReadLine());
             var rover = new Rover.Rover(start.Item1, start.Item2);
             cmd.Execute(rover);
             var directionChar = DirectionCommands()
@@ -37,9 +37,29 @@ namespace Command
             return dictionary;
         }
     }
-    public class TurnCommand
+    static class CommandFactory
     {
-        private string direction;
+        public static ICommand Get(string input)
+        {
+            switch (input)
+            {
+                case "M":
+                    return new MoveCommand();
+                case "L":
+                case "R":
+                    return new TurnCommand(input);
+                default:
+                    return new NoCommand();
+            }
+        }
+    }
+    interface ICommand
+    {
+        void Execute(Rover.Rover rover);
+    }
+    public class TurnCommand : ICommand
+    {
+        public string direction {get; private set;}
         public TurnCommand(string turnDirection)
         {
             direction = turnDirection;
@@ -57,6 +77,21 @@ namespace Command
                     break;                    
                 }
             }
+        }
+    }
+
+    public class MoveCommand : ICommand
+    {
+        public void Execute(Rover.Rover rover)
+        {
+            rover.Move();
+        }
+    }
+    public class NoCommand : ICommand
+    {
+        public void Execute(Rover.Rover rover)
+        {
+            
         }
     }
 }

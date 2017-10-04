@@ -49,6 +49,14 @@ R
             var marsRover = new MarsRover();
             return marsRover.Run(input);
         }
+
+        [Category("Step3")]
+        [Test, TestCaseSource(typeof(RoverTestCases), "MoveTestCases")]
+        public string RoverSingleMoves(string input)
+        {
+            var marsRover = new MarsRover();
+            return marsRover.Run(input);
+        }
     }
 
     public class RoverTestCases
@@ -75,6 +83,17 @@ R
                 yield return TestCaseFactory("1 1 W", "R", "1 1 N");
             }
         }  
+        public static IEnumerable<TestCaseData> MoveTestCases
+        {
+            get
+            {
+                yield return TestCaseFactory("1 1 N", "M", "1 2 N");
+                yield return TestCaseFactory("1 1 E", "M", "2 1 E");
+                yield return TestCaseFactory("1 1 W", "M", "0 1 W");
+                yield return TestCaseFactory("1 1 S", "M", "1 0 S");
+            }
+        }  
+
     }
 
 }

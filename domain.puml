@@ -1,0 +1,77 @@
+@startuml Mars
+
+package "Rover" #DDDDDD {
+  class Rover << (A,orchid) Actor >>{
+    Represent a single rover
+    ..
+    +Rover(Position, Direction)
+    ==
+    +TurnLeft()
+    +TurnRight()
+    +Move()
+    }
+
+    object Position
+    object Direction
+    
+    Rover *--> Position
+    Rover *--> Direction  
+
+  class "Plateau" << (V, #0000ff) Value >>{
+      A fixed size piece of Mars
+  }
+
+  class RoverSquad << (C,#cccccc) controller >>{
+      +RSC(Insructions)
+      +Rover[] Rovers
+      +RoverPosDirections()
+  }
+  RoverSquad <--* Rover
+  Plateau <--* RoverSquad
+}
+
+package Commands{
+
+    class Instructions{
+        Instructions(string input)
+    }
+    object RoverCommand
+    object PlateauInitializer
+    class NasaCommandSet{
+        A command set for a rover
+        --
+        +StartDirection
+        +StartPosition
+        +Commands(Rover): RoverCommand[]
+    }
+    class MoveCommand{
+        move forward
+        --
+        +Execute()
+    }
+    class TurnLeft{
+        Turn Left
+        --
+        +Execute()
+    }
+    class TurnRight{
+        Turn Right
+        --
+        +Execute()
+    }
+
+    TurnLeft -up--|> RoverCommand
+    TurnRight -up--|> RoverCommand
+    MoveCommand -up--|> RoverCommand
+    Instructions *-- "many" NasaCommandSet
+    NasaCommandSet *-- "many" RoverCommand
+    Instructions *-- PlateauInitializer
+}
+
+Package Main << "Not in scope" >> {
+    object main
+    main --> Instructions
+    main --> RoverSquad
+}
+
+@enduml

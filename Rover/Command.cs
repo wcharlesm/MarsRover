@@ -12,19 +12,21 @@ namespace Command
         {
             var sr = new StringReader(input);
             _ = sr.ReadLine();
-            var faceing = parseDirection(sr.ReadLine());
+            var start = parseStart(sr.ReadLine());
             var cmd = new TurnCommand(sr.ReadLine());
-            var rover = new Rover.Rover(faceing);
+            var rover = new Rover.Rover(start.Item1, start.Item2);
             cmd.Execute(rover);
             var directionChar = DirectionCommands()
                 .FirstOrDefault(x => x.Value.Equals(rover.direction))
                 .Key;
-            return $"1 1 {directionChar}";
+            return $"{rover.position.X} {rover.position.Y} {directionChar}";
         }
-        private Direction parseDirection(string input)
+        private Tuple<Position, Direction> parseStart(string input)
         {
-            var dirChar = input.Split(' ')[2];
-            return DirectionCommands()[dirChar];
+            var inputs = input.Split(' ');
+            var pos = new Position(Int16.Parse(inputs[0]), Int16.Parse(inputs[1]));
+            var dir =  DirectionCommands()[inputs[2]];
+            return new Tuple<Position, Direction>(pos, dir);
         }
         private Dictionary<string, Direction> DirectionCommands(){
             Dictionary<string, Direction> dictionary = new Dictionary<string, Direction>();

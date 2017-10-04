@@ -12,7 +12,7 @@ namespace Command
         public void RoverTest()
         {
             var input = @"5 5
-1 2 N
+1 1 N
 
 ";
             var marsRover = new MarsRover();
@@ -24,7 +24,7 @@ namespace Command
         public void RoverTurns()
         {
             var input = @"5 5
-1 2 N
+1 1 N
 L
 ";
             var marsRover = new MarsRover();
@@ -39,7 +39,7 @@ L
 R
 ";
             var marsRover = new MarsRover();
-            marsRover.Run(input).Should().Be("1 1 E");
+            marsRover.Run(input).Should().Be("1 2 E");
         }
 
         [Category("Step2")]

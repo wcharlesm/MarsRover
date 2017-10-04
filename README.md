@@ -32,4 +32,4 @@ the output should be
 ## Steps
 1. A single rover that does not move
 2. A single rover that can turn (once)
-
+3. A single rover that can move (once)

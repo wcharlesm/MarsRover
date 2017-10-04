@@ -16,6 +16,10 @@ namespace Rover
             var rover = new Rover(Direction.NORTH);
             rover.TurnLeft();
             rover.direction.Should().Be(Direction.WEST);
+
+            rover = new Rover(Direction.SOUTH);
+            rover.TurnLeft();
+            rover.direction.Should().Be(Direction.EAST);
         }
         [Test]
         [Category("Step2")]
@@ -29,6 +33,21 @@ namespace Rover
             rover.TurnRight();
             rover.direction.Should().Be(Direction.WEST);
         }
+
+        [Test]
+        [Category("Step3")]
+        public void RoverMove()
+        {
+            var rover = new Rover(new Position(0,0), Direction.NORTH);
+            rover.Move();
+            rover.direction.Should().Be(Direction.NORTH);
+            rover.position.ShouldBeEquivalentTo(new Position(0,1));
+            
+            rover = new Rover(Direction.SOUTH);
+            rover.TurnRight();
+            rover.direction.Should().Be(Direction.WEST);
+        }
+
     }
 
 }

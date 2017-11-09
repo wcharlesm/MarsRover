@@ -7,7 +7,7 @@ namespace MarsRover.Implementations
 {
     public class Dispatcher : IDispatcher
     {
-        IPlateauMap _plateauMap;
+        private IPlateauMap _plateauMap;
         public Dispatcher(IPlateauMap plateauMap)
         {
             _plateauMap = plateauMap;

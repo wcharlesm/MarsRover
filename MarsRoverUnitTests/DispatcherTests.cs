@@ -19,6 +19,16 @@ namespace MarsRoverUnitTests
         }
 
         [Fact]
+        public void AddRoverHappyPath()
+        {
+            var dispatch = "5 5\n1 1 N\nMRML";
+
+            var output = dispatcher.ReceiveInstructions(dispatch);
+
+            _plateauMap.Verify(x => x.AddRover(1, 1, "N"), Times.Once);
+        }
+
+        [Fact]
         public void MapIsSetHappyPath()
         {
             var dispatch = "5 5\n1 1 N\nMRML";

@@ -1,7 +1,6 @@
 using MarsRover.Implementations;
 using MarsRover.Interfaces;
 using Moq;
-using System;
 using Xunit;
 
 namespace MarsRoverUnitTests

@@ -8,9 +8,15 @@ namespace MarsRoverUnitTests
     {
         Dispatcher dispatcher;
 
-        [Fact]
-        public void Test1()
+        public DispatcherTests()
         {
+            dispatcher = new Dispatcher();
+        }
+
+        [Fact]
+        public void HappyPath()
+        {
+            dispatcher.ReceiveInstructions("");
         }
     }
 }

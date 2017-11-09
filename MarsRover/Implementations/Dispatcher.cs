@@ -7,7 +7,7 @@ namespace MarsRover.Implementations
 {
     public class Dispatcher : IDispatcher
     {
-        string IDispatcher.ReceiveInstructions(string dispatch)
+        public string ReceiveInstructions(string dispatch)
         {
             throw new NotImplementedException();
         }

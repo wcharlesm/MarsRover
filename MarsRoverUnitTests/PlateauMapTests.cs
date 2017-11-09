@@ -25,14 +25,14 @@ namespace MarsRoverUnitTests
         public void SetMapNegativeX()
         {
             Exception ex = Assert.Throws<Exception>(() => _plateauMap.SetMap(-5, 5));
-            Assert.Equal("Negative x Coordinate", ex.Message);
+            Assert.Equal("Negative Width", ex.Message);
         }
 
         [Fact]
         public void SetMapNegativeY()
         {
             Exception ex = Assert.Throws<Exception>(() => _plateauMap.SetMap(5, -5));
-            Assert.Equal("Negative y Coordinate", ex.Message);
+            Assert.Equal("Negative Height", ex.Message);
         }
     }
 }

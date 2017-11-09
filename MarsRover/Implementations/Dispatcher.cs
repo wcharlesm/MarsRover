@@ -21,7 +21,7 @@ namespace MarsRover.Implementations
 
             _plateauMap.SetMap(int.Parse(plateauCoordinates[0]), int.Parse(plateauCoordinates[1]));
 
-            throw new NotImplementedException();
+            return dispatch;
         }
     }
 }

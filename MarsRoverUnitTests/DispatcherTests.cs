@@ -14,8 +14,8 @@ namespace MarsRoverUnitTests
 
         public DispatcherTests()
         {
-            var plateauMap = new Mock<IPlateauMap>();
-            dispatcher = new Dispatcher(plateauMap.Object);
+            _plateauMap = new Mock<IPlateauMap>();
+            dispatcher = new Dispatcher(_plateauMap.Object);
         }
 
         [Fact]

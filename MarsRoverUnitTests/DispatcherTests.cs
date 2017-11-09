@@ -1,4 +1,6 @@
 using MarsRover.Implementations;
+using MarsRover.Interfaces;
+using Moq;
 using System;
 using Xunit;
 
@@ -10,7 +12,8 @@ namespace MarsRoverUnitTests
 
         public DispatcherTests()
         {
-            dispatcher = new Dispatcher();
+            var plateauMap = new Mock<IPlateauMap>();
+            dispatcher = new Dispatcher(plateauMap.Object);
         }
 
         [Fact]

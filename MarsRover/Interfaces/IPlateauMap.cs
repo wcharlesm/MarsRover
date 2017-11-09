@@ -4,7 +4,8 @@ using System.Text;
 
 namespace MarsRover.Interfaces
 {
-    interface IPlateauMap
+    public interface IPlateauMap
     {
+        void SetMap(int width, int height);
     }
 }

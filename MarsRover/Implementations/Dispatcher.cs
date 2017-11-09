@@ -7,13 +7,20 @@ namespace MarsRover.Implementations
 {
     public class Dispatcher : IDispatcher
     {
-        public Dispatcher()
+        IPlateauMap _plateauMap;
+        public Dispatcher(IPlateauMap plateauMap)
         {
-
+            _plateauMap = plateauMap;
         }
 
         public string ReceiveInstructions(string dispatch)
         {
+            var instructions = dispatch.Split('\n');
+
+            var plateauCoordinates = instructions[0].Split(' ');
+
+            _plateauMap.SetMap(int.Parse(plateauCoordinates[0]), int.Parse(plateauCoordinates[1]));
+
             throw new NotImplementedException();
         }
     }

@@ -1,6 +1,7 @@
 ﻿using MarsRover.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace MarsRover.Implementations
@@ -25,7 +26,11 @@ namespace MarsRover.Implementations
 
             _plateauMap.AddRover(int.Parse(roverPlacement[0]), int.Parse(roverPlacement[1]), roverPlacement[2]);
 
-            return dispatch;
+            _plateauMap.MoveRover(instructions[2]);
+
+            var (x, y, facing) = _plateauMap.GetPosition();
+
+            return $"{x.ToString()} {y.ToString()} {facing}";
         }
     }
 }

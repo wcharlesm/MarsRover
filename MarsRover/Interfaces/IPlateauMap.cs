@@ -8,5 +8,7 @@ namespace MarsRover.Interfaces
     {
         void SetMap(int width, int height);
         void AddRover(int x, int y, String facing);
+        void MoveRover(string instructions);
+        (int, int, String) GetPosition();
     }
 }

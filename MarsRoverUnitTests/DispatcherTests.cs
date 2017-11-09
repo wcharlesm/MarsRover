@@ -14,9 +14,14 @@ namespace MarsRoverUnitTests
         }
 
         [Fact]
-        public void HappyPath()
+        public void ExampleHappyPath()
         {
-            dispatcher.ReceiveInstructions("");
+            var dispatch = "5 5\n1 1 N\nMRML";
+            var expectedOutput = "2 2 N";
+
+            var output = dispatcher.ReceiveInstructions(dispatch);
+
+            Assert.Equal(expectedOutput, output);
         }
     }
 }

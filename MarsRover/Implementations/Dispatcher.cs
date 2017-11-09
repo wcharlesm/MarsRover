@@ -5,7 +5,7 @@ using System.Text;
 
 namespace MarsRover.Implementations
 {
-    class Dispatcher : IDispatcher
+    public class Dispatcher : IDispatcher
     {
         string IDispatcher.ReceiveInstructions(string dispatch)
         {

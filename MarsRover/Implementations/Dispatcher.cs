@@ -24,7 +24,13 @@ namespace MarsRover.Implementations
 
             var roverPlacement = instructions[1].Split(' ');
 
-            _plateauMap.AddRover(int.Parse(roverPlacement[0]), int.Parse(roverPlacement[1]), roverPlacement[2]);
+            var rover = new Rover
+            {
+                Width = int.Parse(roverPlacement[0]),
+                Height = int.Parse(roverPlacement[1]),
+                Facing = roverPlacement[2].ToCharArray()[0]
+            };
+            _plateauMap.AddRover(rover);
 
             _plateauMap.MoveRover(instructions[2]);
 

@@ -16,9 +16,9 @@ namespace MarsRoverUnitTests
         [Fact]
         public void MoveRoverHappyPath()
         {
-            var (x, y, f) = (2, 2, "N");
+            var (x, y, f) = (2, 2, 'N');
             _plateauMap.SetMap(5, 5);
-            _plateauMap.AddRover(1, 1, "N");
+            _plateauMap.AddRover(new Rover { Width = 1, Height = 1, Facing = 'N' });
             _plateauMap.MoveRover("MRML");
             var (x1, y1, f1) = _plateauMap.GetPosition();
             Assert.Equal(x, x1);
@@ -30,13 +30,13 @@ namespace MarsRoverUnitTests
         public void AddRoverHappyPath()
         {
             _plateauMap.SetMap(5, 5);
-            _plateauMap.AddRover(1, 1, "N");
+            _plateauMap.AddRover(new Rover { Width = 1, Height = 1, Facing = 'N' });
         }
 
         [Fact]
         public void AddRoverBeforeMap()
         {
-            Exception ex = Assert.Throws<Exception>(() => _plateauMap.AddRover(1, 1, "N"));
+            Exception ex = Assert.Throws<Exception>(() => _plateauMap.AddRover(new Rover { Width = 1, Height = 1, Facing = 'N' }));
             Assert.Equal("Map Not Set", ex.Message);
         }
 

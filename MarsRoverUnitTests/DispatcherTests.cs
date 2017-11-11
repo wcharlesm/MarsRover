@@ -35,7 +35,9 @@ namespace MarsRoverUnitTests
 
             var output = dispatcher.ReceiveInstructions(dispatch);
 
-            _plateauMap.Verify(x => x.AddRover(1, 1, "N"), Times.Once);
+            _plateauMap.Verify(
+                x => x.AddRover(It.Is<Rover>(rov => rov.Width == 1 && rov.Height == 1 && rov.Facing == 'N')), 
+                Times.Once);
         }
 
         [Fact]
@@ -54,7 +56,7 @@ namespace MarsRoverUnitTests
             var dispatch = "5 5\n1 1 N\nMRML";
             var expectedOutput = "2 2 N";
 
-            _plateauMap.Setup(x => x.GetPosition()).Returns((2, 2, "N"));
+            _plateauMap.Setup(x => x.GetPosition()).Returns((2, 2, 'N'));
 
             var output = dispatcher.ReceiveInstructions(dispatch);
 
